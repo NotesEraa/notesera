@@ -1,0 +1,20 @@
+.search_notes_form{
+    padding:20px;
+    
+}
+
+.material_card_list{
+    border-radius: 33px;
+background: #e0e0e0;
+box-shadow:  23px 23px 45px #c3c3c3,
+             -23px -23px 45px #fdfdfd;
+margin-top: 20px;
+}
+
+.drive_link{
+    text-decoration: none;
+    color:black !important;
+    padding:4px;
+    margin:3px;
+
+}

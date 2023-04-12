@@ -1,0 +1,54 @@
+.gradient_back{
+ 
+    height:28rem;
+}
+.text_div{
+    padding:6rem;
+    position:absolute;
+    /* color:rgb(57,39,135); */
+}
+.sectionone_div{
+    background-repeat: no-repeat; 
+    object-fit:cover;
+    position:relative;
+    height:25rem;
+}
+.started_button{
+    border-radius:50px;
+    font-size: 20px;
+background: rgb(84,83,202);
+background: linear-gradient(90deg, rgba(84,83,202,1) 0%, rgba(67,60,140,1) 100%);
+color:white;
+margin:10px;
+}
+
+@media(max-width:1125px){
+   .started_botton{
+    visibility:hidden;
+   } 
+}
+@media (max-width:1007px){
+    .gradient_back{
+        height:35rem;
+    }
+   .sectionone_div{
+        height:20rem;
+   }
+    .text_div{
+       
+        font-size:25px;
+    }
+   
+}
+
+@media (max-width:650px){
+    .gradient_back{
+        height:30rem;
+    }
+  
+  
+    .text_div{
+        /* top:8rem; */
+        font-size:20px;
+    }
+}

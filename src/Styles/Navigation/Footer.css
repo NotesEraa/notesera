@@ -1,0 +1,26 @@
+.wrapbox{
+    position: relative;
+}
+.subdiv{
+    background-color: #4B4098;
+    padding:2rem;
+    border-radius: 15px;
+}
+.footercomponent{
+    width:100%;
+    background: rgb(57,39,135);
+    background: linear-gradient(90deg, rgba(57,39,135,1) 0%, rgba(62,51,143,1) 100%);
+    padding:5rem;
+    top:3rem;
+    position:absolute;
+  z-index:1;
+      
+}
+.link{
+    text-decoration:None;
+}
+
+.link:hover{
+    color:#ffffff;
+    text-decoration: underline;
+}
