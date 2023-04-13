@@ -5,7 +5,7 @@ export default function faq() {
   return (
     <>
     <div className="alignCentre heading" id="faq" >FAQ's</div>
-    <div className="card">
+    <div className="card ">
        
         <div className="row">
        

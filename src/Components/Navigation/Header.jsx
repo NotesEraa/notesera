@@ -46,16 +46,16 @@ const navigate = useNavigate();
  <div>
     <img  src={Logo}  className= "alignLeft Logo"/>
          
-    <button onClick={()=>navigate('authpage')} className="alignRight btn botton botton_pos marginAlign">Join network</button>
+    <button onClick={()=>navigate('/Signup')} className="alignRight btn botton botton_pos marginAlign">Join network</button>
    
  </div>:<div>
           <img  src={Logo}  className= "alignLeft Logo"/>
          
-          <Link className="nav_link link1" to='notice'>Notice</Link>
-          <Link className="nav_link link2" to='article'>Article</Link>
-          <Link className="nav_link link3" to='library'>E-library</Link>
-          <Link className="nav_link link4" to='login'>Login</Link>
-          <Link className="nav_link link5" to='contactus'>Contact us</Link> 
+          <Link className="nav_link link1" to='/notice'>Notice</Link>
+          <Link className="nav_link link2" to='/article'>Article</Link>
+          <Link className="nav_link link3" to='/library'>E-library</Link>
+          <Link className="nav_link link4" to='/Signup'>Sign up/Login</Link>
+          <Link className="nav_link link5" to='/landingpage'>Home</Link> 
                        
  </div>
 }

@@ -4,7 +4,7 @@
 }
 
 .material_card_list{
-    border-radius: 33px;
+    border-radius: 23px;
 background: #e0e0e0;
 box-shadow:  23px 23px 45px #c3c3c3,
              -23px -23px 45px #fdfdfd;
@@ -17,4 +17,14 @@ margin-top: 20px;
     padding:4px;
     margin:3px;
 
+}
+
+.search_notes_result_card{
+    height:30rem;
+    position:relative;
+    overflow-y: scroll;
+}
+
+.result_search_notes{
+   
 }

@@ -35,3 +35,17 @@ body {
 .Logo{
   font-size:80px;
 }
+
+.botton{
+    
+background: rgb(84,83,202);
+background: linear-gradient(90deg, rgba(84,83,202,1) 0%, rgba(67,60,140,1) 100%);
+color:white;
+border-radius: 12px;
+
+}
+
+.mgRight{
+   position:relative;
+   right:30px;
+}
