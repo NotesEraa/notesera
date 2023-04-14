@@ -6,6 +6,7 @@ import Noticepage from './Pages/Noticepage';
 import Authpage from './Pages/Authpage';
 import Articlepage from './Pages/Articlepage';
 import Login from '../src/Components/Authentication/Login'
+import ItemListButton from './Components/testCode/ItemListButton';
 import {QueryClient , QueryClientProvider } from "@tanstack/react-query";
 
 
@@ -24,6 +25,7 @@ function App() {
           <Route path='/Signup' element={<Authpage/>} />
           <Route path='/Login' element={<Login/>} />
           <Route path='/article' element={<Articlepage/>} />
+          <Route path='/test' element={<ItemListButton/>} />
         </Routes>
       </main>
       </QueryClientProvider>

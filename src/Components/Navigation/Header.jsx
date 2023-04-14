@@ -4,6 +4,7 @@ import {Link } from 'react-router-dom';
 import { useEffect , useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../../Assets/vectorsandimages/logo_notesera.png'
+import MenuButton from './MenuButton';
 
 export default function Header() {
   const [windowSize, setWindowSize] = useState([
@@ -45,8 +46,10 @@ const navigate = useNavigate();
  check()?
  <div>
     <img  src={Logo}  className= "alignLeft Logo"/>
-         
-    <button onClick={()=>navigate('/Signup')} className="alignRight btn botton botton_pos marginAlign">Join network</button>
+    
+    <MenuButton className=" botton_pos marginAlign"/> 
+    
+    {/* <button onClick={()=>navigate('/Signup')} className="alignRight btn botton botton_pos marginAlign">Join network</button> */}
    
  </div>:<div>
           <img  src={Logo}  className= "alignLeft Logo"/>

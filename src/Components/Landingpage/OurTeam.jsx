@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../Styles/Landingpage/OurTeam.css';
-
+import {Link} from 'react-router-dom'
 export default function OurTeam() {
   const teamList = [
     {    'id':0,
@@ -67,7 +67,7 @@ export default function OurTeam() {
                 <div className = "  slide">
                  <div className="card_div">
                     <img className="card col-12 expertImg" src={items.img_url}/>
-                    <span>hello</span>
+                    <Link to="https://www.google.com">hello</Link>
                </div> 
             </div>
                </>
