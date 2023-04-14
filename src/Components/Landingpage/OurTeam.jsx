@@ -67,6 +67,7 @@ export default function OurTeam() {
                 <div className = "  slide">
                  <div className="card_div">
                     <img className="card col-12 expertImg" src={items.img_url}/>
+                    <span>hello</span>
                </div> 
             </div>
                </>
