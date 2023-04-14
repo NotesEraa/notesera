@@ -6,7 +6,7 @@ function ItemList({ items }) {
     items = [
         {
            "name":"Home",
-           "nav":'/home'
+           "nav":'/landingpage'
         },
         {
           "name":"Article",
@@ -18,7 +18,7 @@ function ItemList({ items }) {
      },
      {
       "name":"Notice",
-      "nav":'/notice'
+      "nav":'/Notice'
    },
    {
     "name":"Signip/Login",
