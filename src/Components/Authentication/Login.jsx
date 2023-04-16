@@ -8,6 +8,9 @@ import Footer from '../../Components/Navigation/Footer'
 import '../../Styles/Authpage/Login.css';
 import { useState } from 'react';
 import {Link } from 'react-router-dom';
+import { publicAxios } from '../../_helpers/AuthRoute';
+import axios from 'axios';
+
 import { 
     useQuery,
     useMutation,
@@ -23,18 +26,26 @@ export default function Login() {
     email:"",
     password:"",
   });
-
-//   const addMutation = useMutation({
-//     mutationFn: async (data) => {
-//       // return await console.log("mutate!")
-//       return await 
-//          publicAxios.post('/login/',data).then((res)=>{
-//             window.alert(res.data);
-//             queryClient.invalidateQueries({ queryKey: ['users'] });
-//             navigate('/loginsuccess')
-//          })
-//     },
-//   })
+  const API_URL ='http://localhost:1111'
+  const addMutation = useMutation({
+    mutationFn: async (data) => {
+      // return await console.log("mutate!")
+      return await 
+      axios.post(`${API_URL}/login/`,data).then((res)=>{
+        if (res.status == 200){
+          console.log(res.data.status)
+          window.alert(`${res.email} logged in successfully`);
+          queryClient.invalidateQueries({ queryKey: ['users'] });
+          navigate('/landingpage');
+        }else if (res.status == 400){
+          window.alert(res.data.message);
+        }else if (res.data.status == 500){
+          window.alert("error in database!")
+        }
+          
+         })
+    },
+  })
 
   const handleSubmit=(e)=>{
     e.preventDefault();
@@ -46,9 +57,9 @@ export default function Login() {
     
     }
     console.log(data);
-    // addMutation.mutate(data) 
+    addMutation.mutate(data) 
     
-    // queryClient.invalidateQueries("users")
+    queryClient.invalidateQueries("users")
   }
 
   const handleInput = (e)=>{

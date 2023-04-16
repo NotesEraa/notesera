@@ -5,6 +5,10 @@ import Background from '../../Assets/vectorsandimages/authcard_background.jpg';
 import Logo from '../../Assets/vectorsandimages/logo_notesera.png';
 import '../../Styles/Authpage/SignUp.css';
 import { useState } from 'react';
+import axios from 'axios';
+// import Cookies from 'js-cookie'; 
+import { publicAxios } from '../../_helpers/AuthRoute';
+
 import { 
     useQuery,
     useMutation,
@@ -14,7 +18,7 @@ import {
 export default function Signup() {
     const navigate = useNavigate();
     const queryClient = useQueryClient();
-  
+    
   
     const [ user , setuser] = useState({
       first_name:"",
@@ -25,20 +29,30 @@ export default function Signup() {
       refer_code:"",
   
     });
-  
-    // const addMutation = useMutation({
-    //   mutationFn: async (data) => {
-    //     return await 
-    //        publicAxios.post('register/',data).then((res)=>{
-    //           // window.alert(res.access_token);
-    //           Cookies.set('user_access_token',res.access_token);
-    //           const token = Cookies.get('user_access_token');
-    //           window.alert(token);
-    //           queryClient.invalidateQueries({ queryKey: ['users'] });
-    //           navigate('/loginsuccess')
-    //        })
-    //   },
-    // })
+    const API_URL ='http://localhost:1111'
+    const addMutation = useMutation({
+      mutationFn: async (data) => {
+        return await 
+           axios.post(`${API_URL}/signup/`,data).then((res)=>{
+              // window.alert(res.access_token);
+              console.log(data.email);
+
+              if (res.status==200){
+                queryClient.invalidateQueries({ queryKey: ['users'] });
+              
+                // Cookies.set('user_name',res.email);
+                // Cookies.set('user_status','active')
+                // const user_name = Cookies.get('user_name');
+                // const user_status = Cookies.get('user_status');
+                window.alert('User registerred and logged in successfully!')
+                navigate('/landingpage')
+              }else if (res.status == 500){
+                  window.alert(res.message);
+              }
+             
+           })
+      },
+    })
   
   
     const handleSubmit=(e)=>{
@@ -49,11 +63,10 @@ export default function Signup() {
         "first_name":user.first_name,
         "last_name":user.last_name,
         "email":user.email,
-        "password1":user.password1,
-        "password2":user.password2,
-        "refer_code":user.refer_code
+        "password":user.password1,
+       
       }
-    //   addMutation.mutate(data) 
+      addMutation.mutate(data) 
       
       queryClient.invalidateQueries("users")
   }

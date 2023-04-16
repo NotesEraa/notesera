@@ -2,7 +2,7 @@ import React from 'react'
 import '../../Styles/Landingpage/NotesSearch.css';
 import { useState } from 'react';
 import {Link } from 'react-router-dom';
-
+import axios from 'axios';
 import { 
   useQuery,
   useMutation,
@@ -20,33 +20,47 @@ export default function NotesSearch() {
   ]
   const [ qdata , setqdata] = useState({
     programme_name:"",
-    semestar:"",
+    semester:"",
     subject_name:"",
-    end_sem_paper:"",
-    mid_sem_paper:""
+    
 
  });
- 
- const handleSubmit=(e)=>{
+ const API_URL ='http://localhost:1111';
 
+
+const getNotes =  () => {
+ const reqdata ={
+    "program":qdata.programme_name,
+     "semester":qdata.semester,
+     "subject":qdata.subject_name,
+   }
+  //  console.log(reqdata)
+  return axios.post(`${API_URL}/notes/`,reqdata
+)};
+
+const {isLoading , data} = useQuery({ queryKey: ['notes'], queryFn:getNotes})
+
+//  console.log(data.data.notes)
+
+ const handleSubmit=(e)=>{
+  
   console.log("in handle block!")
   e.preventDefault();
-  const data = {
-   "programme_name":qdata.programme_name,
+  const datax = {
+   "program":qdata.programme_name,
     "semestar":qdata.semester,
-    "subject_name":qdata.subject_name,
-    "end_sem_paper":qdata.end_sem_paper,
-    "mid_sem_paper":qdata.mid_sem_paper
+    "subject":qdata.subject_name,
+   
   }
-  console.log(data) 
-  
-  // queryClient.invalidateQueries("qdata")
-}
+  console.log(datax) 
+ 
+} 
 
+ 
   const handleInput = (e)=>{
     const data = e.target.value;
     const name = e.target.name;
-    console.log(data);
+    // console.log(data);
     setqdata({...qdata,[name]:data});
  }
   
@@ -65,7 +79,7 @@ export default function NotesSearch() {
             name = "programme_name"
             onChange={handleInput}
            >
-        <option className="dropdown-item" value="B.tech">B.tech</option>
+        <option className="dropdown-item" value="btech">B.tech</option>
         <option className="dropdown-item" value="civil">civil</option>
         <option className="dropdown-item" value="pharma">pharma</option>
       </select>
@@ -76,8 +90,8 @@ export default function NotesSearch() {
            name = "subject_name"
            onChange={handleInput}
            >
-        <option className="dropdown-item" value="Maths">Maths</option>
-        <option className="dropdown-item" value="O.S">O.S</option>
+        <option className="dropdown-item" value="stats">Maths</option>
+        <option className="dropdown-item" value="os">O.S</option>
         <option className="dropdown-item" value="Java">Java</option>
       </select>
 
@@ -87,50 +101,14 @@ export default function NotesSearch() {
             name = "semester"
             onChange={handleInput}
            >
-        <option className="dropdown-item" name="opt" value="first">first</option>
-        <option className="dropdown-item" name="opt" value="second">Second</option>
-        <option className="dropdown-item" name="opt" value="third">third</option>
+        <option className="dropdown-item" name="opt" value="1">first</option>
+        <option className="dropdown-item" name="opt" value="2">Second</option>
+        <option className="dropdown-item" name="opt" value="3">third</option>
       </select>
            <div>
      
     </div>
-           <fieldset class="form-group">
-              <div class="row">
-                <h5 class="col-form-label pt-0">Do you want previos year paper?</h5>
-                <div >
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio"
-                      id="gridRadios1" 
-                      value={qdata.mid_sem_paper}
-                      name = "mid_sem_paper"
-                      onChange={handleInput}
-                      checked />
-                    <label class="form-check-label" for="gridRadios1">
-                      MST
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio"
-                      id="gridRadios2" 
-                      value={qdata.end_sem_paper}
-                      name = "end_sem_paper"
-                      onChange={handleInput}
-                    />
-                    <label class="form-check-label" for="gridRadios2">
-                      End sem
-                    </label>
-                  </div>
-                  <div class="form-check disabled">
-                    <input class="form-check-input" type="radio"
-                     name="gridRadios" id="gridRadios3" 
-                     value="No"  />
-                    <label class="form-check-label" for="gridRadios3">
-                       No
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </fieldset>
+          
             </div>
         <button type="submit" className="btn started_button">Submit</button>
         </form>
@@ -139,17 +117,20 @@ export default function NotesSearch() {
         <h2 className="alignCentre">Results</h2>
         
        {
-          tempdata.map((items,key)=>{
+          data?.data.notes.map((items,key)=>{
                 return( <>
                 
                      <div className="p-3 result_search_notes material_card_list ">
                       
                       <div className="row">
-                      <h4 className="m-2 col-3">{items.name}</h4>
+                      <h5 className="m-2 col-3">{items.program}</h5>
+                      <h5 className="m-2 col-3">{items.subject}</h5>
+                      
                       <Link className="col-4 drive_link alignRight" to={items.link}>Drive Link .  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
   <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
 </svg></Link>
+
                       </div>
                      
                       <h7 className="m-3">{items.description}</h7>

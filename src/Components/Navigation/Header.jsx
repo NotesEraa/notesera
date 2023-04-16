@@ -5,7 +5,7 @@ import { useEffect , useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../../Assets/vectorsandimages/logo_notesera.png'
 import MenuButton from './MenuButton';
-
+// import Cookies from 'js-cookies';
 export default function Header() {
   const [windowSize, setWindowSize] = useState([
     window.innerWidth,
@@ -33,6 +33,9 @@ export default function Header() {
           return false
        }
   }
+  // const user_name = Cookies.get('user_name');
+  // const user_status = Cookies.get('user_status');
+  // console.log(user_name, user_status)
 const navigate = useNavigate();
 
   return (
