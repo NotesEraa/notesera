@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../Styles/Landingpage/NotesSearch.css';
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 import {Link } from 'react-router-dom';
 import axios from 'axios';
 import { 
@@ -10,14 +10,32 @@ import {
 
 export default function NotesSearch() {
   const queryClient = useQueryClient();
+  const [notes , setnotes]=useState([])
+  const [counter,setcounter]=useState(0)
+const getdata = ()=>{
+  const datax = {
+    "program":qdata.programme_name,
+     "semestar":qdata.semester,
+     "subject":qdata.subject_name,
+    
+   }
+   console.log(datax) 
+   axios.post(`${API_URL}/notes/`,datax).then((res)=>{
+      setnotes(res.data.notes)
+   })
+}
 
-  const tempdata = [
-    {"id":1, "name":"stats" , "description":"5 little mokey on the tree" , "link":"www.google.com"},
-    {"id":2, "name":"stats" , "description":"5 little mokey on the tree" , "link":"www.google.com"},
-    {"id":3, "name":"stats" , "description":"5 little mokey on the tree" , "link":"www.google.com"},
-    {"id":4, "name":"stats" , "description":"5 little mokey on the tree" , "link":"www.google.com"},
-    {"id":5, "name":"stats" , "description":"5 little mokey on the tree" , "link":"www.google.com"}
-  ]
+  useEffect(()=>{
+    getdata()
+},[counter])
+  
+const tempdata = [
+  {"id":1, "name":"stats" , "description":"5 little mokey on the tree" , "link":"www.google.com"},
+  {"id":2, "name":"stats" , "description":"5 little mokey on the tree" , "link":"www.google.com"},
+  {"id":3, "name":"stats" , "description":"5 little mokey on the tree" , "link":"www.google.com"},
+  {"id":4, "name":"stats" , "description":"5 little mokey on the tree" , "link":"www.google.com"},
+  {"id":5, "name":"stats" , "description":"5 little mokey on the tree" , "link":"www.google.com"}
+]
   const [ qdata , setqdata] = useState({
     programme_name:"",
     semester:"",
@@ -28,17 +46,17 @@ export default function NotesSearch() {
  const API_URL ='http://localhost:1111';
 
 
-const getNotes =  () => {
- const reqdata ={
-    "program":qdata.programme_name,
-     "semester":qdata.semester,
-     "subject":qdata.subject_name,
-   }
-  //  console.log(reqdata)
-  return axios.post(`${API_URL}/notes/`,reqdata
-)};
+// const getNotes =  () => {
+//  const reqdata ={
+//     "program":qdata.programme_name,
+//      "semester":qdata.semester,
+//      "subject":qdata.subject_name,
+//    }
+//   //  console.log(reqdata)
+//   return axios.post(`${API_URL}/notes/`,reqdata
+// )};
 
-const {isLoading , data} = useQuery({ queryKey: ['notes'], queryFn:getNotes})
+// const {isLoading , data} = useQuery({ queryKey: ['notes'], queryFn:getNotes})
 
 //  console.log(data.data.notes)
 
@@ -52,8 +70,7 @@ const {isLoading , data} = useQuery({ queryKey: ['notes'], queryFn:getNotes})
     "subject":qdata.subject_name,
    
   }
-  console.log(datax) 
- 
+  setcounter(counter+1) 
 } 
 
  
@@ -117,7 +134,7 @@ const {isLoading , data} = useQuery({ queryKey: ['notes'], queryFn:getNotes})
         <h2 className="alignCentre">Results</h2>
         
        {
-          data?.data.notes.map((items,key)=>{
+          notes.map((items,key)=>{
                 return( <>
                 
                      <div className="p-3 result_search_notes material_card_list ">

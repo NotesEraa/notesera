@@ -2,17 +2,20 @@ import React from 'react'
 import '../../Styles/Navigation/Header.css';
 import {Link } from 'react-router-dom';
 import { useEffect , useState} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate ,useLocation} from 'react-router-dom';
 import Logo from '../../Assets/vectorsandimages/logo_notesera.png'
 import MenuButton from './MenuButton';
-// import Cookies from 'js-cookies';
+import Cookies from 'js-cookie';
+// import { useCookies } from 'react-cookie';
+
 export default function Header() {
   const [windowSize, setWindowSize] = useState([
     window.innerWidth,
     window.innerHeight,
   ]);
   
-
+  
+  
   useEffect(() => {
     const handleWindowResize = () => {
       setWindowSize([window.innerWidth, window.innerHeight]);
@@ -33,9 +36,10 @@ export default function Header() {
           return false
        }
   }
-  // const user_name = Cookies.get('user_name');
-  // const user_status = Cookies.get('user_status');
-  // console.log(user_name, user_status)
+
+   const user= Cookies.get('access_token')
+  console.log(user)
+  
 const navigate = useNavigate();
 
   return (
@@ -60,7 +64,13 @@ const navigate = useNavigate();
           <Link className="nav_link link1" to='/notice'>Notice</Link>
           <Link className="nav_link link2" to='/article'>Article</Link>
           <Link className="nav_link link3" to='/library'>E-library</Link>
-          <Link className="nav_link link4" to='/Signup'>Sign up/Login</Link>
+          {
+            user?
+            <span className="nav_link link4">{user}</span>
+            :
+            <Link className="nav_link link4" to='/Signup'>Sign up/Login</Link>
+          }
+          
           <Link className="nav_link link5" to='/landingpage'>Home</Link> 
                        
  </div>

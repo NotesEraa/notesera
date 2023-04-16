@@ -39,17 +39,17 @@ export default function Signup() {
 
               if (res.status==200){
                 queryClient.invalidateQueries({ queryKey: ['users'] });
-              
                 // Cookies.set('user_name',res.email);
                 // Cookies.set('user_status','active')
                 // const user_name = Cookies.get('user_name');
                 // const user_status = Cookies.get('user_status');
                 window.alert('User registerred and logged in successfully!')
                 navigate('/landingpage')
-              }else if (res.status == 500){
+                }else if (res.status == 500){
                   window.alert(res.message);
               }
-             
+           }).catch((err)=>{
+               window.alert("Error in database ")
            })
       },
     })

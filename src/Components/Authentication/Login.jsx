@@ -5,6 +5,8 @@ import Background from '../../Assets/vectorsandimages/authcard_background.jpg';
 import Logo from '../../Assets/vectorsandimages/logo_notesera.png';
 import Header from '../../Components/Navigation/Header'
 import Footer from '../../Components/Navigation/Footer'
+import Cookies from 'js-cookies';
+import { useCookies } from 'react-cookie'
 import '../../Styles/Authpage/Login.css';
 import { useState } from 'react';
 import {Link } from 'react-router-dom';
@@ -21,7 +23,8 @@ export default function Login() {
     const navigate = useNavigate();
   const queryClient = useQueryClient();
  
-
+  const [cookies, setCookie] = useCookies(['access_token', 'refresh_token'])
+  const [uname , setuname]=useState('');
   const [ user , setuser] = useState({ 
     email:"",
     password:"",
@@ -32,17 +35,24 @@ export default function Login() {
       // return await console.log("mutate!")
       return await 
       axios.post(`${API_URL}/login/`,data).then((res)=>{
+        console.log(res)
         if (res.status == 200){
-          console.log(res.data.status)
-          window.alert(`${res.email} logged in successfully`);
+          console.log(res.data.user.email)
+          setuname(res.data.user.first_name)
+          window.alert(`${res.data.user.email} logged in successfully`);
           queryClient.invalidateQueries({ queryKey: ['users'] });
-          navigate('/landingpage');
-        }else if (res.status == 400){
-          window.alert(res.data.message);
-        }else if (res.data.status == 500){
+          setCookie('access_token', res.data.user.first_name)
+          navigate(`/landingpage?user=${res.data.user.first_name}`);
+        }else {
           window.alert("error in database!")
         }
           
+         }).catch((err)=>{
+           if(err.message ==  'Request failed with status code 400'){
+            window.alert("password or username is incorrect!")
+           }else{
+            window.alert("error in database!")
+           }
          })
     },
   })
