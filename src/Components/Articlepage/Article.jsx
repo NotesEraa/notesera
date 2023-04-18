@@ -1,5 +1,5 @@
 import React from 'react'
-import img from '../../Assets/vectorsandimages/blogsectionimg.gif';
+
 import '../../Styles/Articlepage/Article.css';
 import {useState , useEffect } from 'react'
 import {Link} from 'react-router-dom'

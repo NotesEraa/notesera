@@ -7,8 +7,9 @@ import '../../Styles/Authpage/SignUp.css';
 import { useState } from 'react';
 import axios from 'axios';
 import API_URL from '../../_helpers/Constants';
+import { useCookies } from 'react-cookie'
 // import Cookies from 'js-cookie'; 
-import { publicAxios } from '../../_helpers/AuthRoute';
+
 
 import { 
     useQuery,
@@ -19,7 +20,7 @@ import {
 export default function Signup() {
     const navigate = useNavigate();
     const queryClient = useQueryClient();
-    
+    const [cookies, setCookie] = useCookies(['access_token', 'refresh_token'])
   
     const [ user , setuser] = useState({
       first_name:"",
@@ -34,7 +35,7 @@ export default function Signup() {
     const addMutation = useMutation({
       mutationFn: async (data) => {
         return await 
-           axios.post(`${API_URL}/signup/`,data).then((res)=>{
+           axios.post(`${API_URL}signup/`,data).then((res)=>{
               // window.alert(res.access_token);
               console.log(data.email);
 
@@ -44,6 +45,7 @@ export default function Signup() {
                 // Cookies.set('user_status','active')
                 // const user_name = Cookies.get('user_name');
                 // const user_status = Cookies.get('user_status');
+                setCookie('access_token', user.first_name)
                 window.alert('User registerred and logged in successfully!')
                 navigate('/landingpage')
                 }else if (res.status == 500){
