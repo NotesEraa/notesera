@@ -18,7 +18,7 @@ function ItemList({ items }) {
 export default ItemList;
 
 
-obj = [{
+const obj = [{
   
   "subject":"os",
   "semester":"1",
