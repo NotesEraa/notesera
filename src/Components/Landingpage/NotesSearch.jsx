@@ -3,6 +3,7 @@ import '../../Styles/Landingpage/NotesSearch.css';
 import { useState , useEffect} from 'react';
 import {Link } from 'react-router-dom';
 import axios from 'axios';
+import API_URL from '../../_helpers/Constants';
 import { 
   useQuery,
   useMutation,
@@ -20,7 +21,7 @@ const getdata = ()=>{
     
    }
    console.log(datax) 
-   axios.post(`${API_URL}/notes/`,datax).then((res)=>{
+   axios.post(`${API_URL}notes/`,datax).then((res)=>{
       setnotes(res.data.notes)
    })
 }
@@ -43,7 +44,7 @@ const tempdata = [
     
 
  });
- const API_URL ='http://localhost:1111';
+//  const API_URL ='http://localhost:1111';
 
 
 // const getNotes =  () => {

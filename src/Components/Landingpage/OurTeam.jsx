@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../Styles/Landingpage/OurTeam.css';
+import API_URL from '../../_helpers/Constants';
 import {Link} from 'react-router-dom'
 export default function OurTeam() {
   const teamList = [

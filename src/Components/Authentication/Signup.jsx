@@ -6,6 +6,7 @@ import Logo from '../../Assets/vectorsandimages/logo_notesera.png';
 import '../../Styles/Authpage/SignUp.css';
 import { useState } from 'react';
 import axios from 'axios';
+import API_URL from '../../_helpers/Constants';
 // import Cookies from 'js-cookie'; 
 import { publicAxios } from '../../_helpers/AuthRoute';
 
@@ -29,7 +30,7 @@ export default function Signup() {
       refer_code:"",
   
     });
-    const API_URL ='http://localhost:1111'
+    // const API_URL ='http://localhost:1111'
     const addMutation = useMutation({
       mutationFn: async (data) => {
         return await 

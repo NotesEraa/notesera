@@ -6,6 +6,7 @@ import Logo from '../../Assets/vectorsandimages/logo_notesera.png';
 import Header from '../../Components/Navigation/Header'
 import Footer from '../../Components/Navigation/Footer'
 import Cookies from 'js-cookies';
+import API_URL from '../../_helpers/Constants';
 import { useCookies } from 'react-cookie'
 import '../../Styles/Authpage/Login.css';
 import { useState } from 'react';
@@ -29,12 +30,12 @@ export default function Login() {
     email:"",
     password:"",
   });
-  const API_URL ='http://localhost:1111'
+  console.log()
   const addMutation = useMutation({
     mutationFn: async (data) => {
-      // return await console.log("mutate!")
+      console.log(API_URL)
       return await 
-      axios.post(`${API_URL}/login/`,data).then((res)=>{
+      axios.post(`${API_URL}login/`,data).then((res)=>{
         console.log(res)
         if (res.status == 200){
           console.log(res.data.user.email)

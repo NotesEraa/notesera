@@ -4,13 +4,13 @@ import '../../Styles/Articlepage/Article.css';
 import {useState , useEffect } from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios';
-
+import API_URL from '../../_helpers/Constants';
 export default function Article() {
   const [ article , setarticle] = useState([])
    
-const API_URL ='http://localhost:1111';
+// const API_URL ='http://localhost:1111';
 const  getdata=async ()=>{
-    let data = await axios.get(`${API_URL}/recentarticle/`)
+    let data = await axios.get(`${API_URL}recentarticle/`)
     let articleArray = data.data.articles;
     setarticle(articleArray);
 }

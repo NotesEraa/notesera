@@ -1,6 +1,7 @@
 import React from 'react'
 import { publicAxios } from '../../_helpers/AuthRoute';
 import axios from 'axios';
+import API_URL from '../../_helpers/Constants';
 import {Link} from 'react-router-dom'
 import BASE_URL from '../../_helpers/Constants';
 import {useState , useEffect } from 'react'
@@ -8,9 +9,9 @@ export default function CommunityNotification() {
 
     const [ notification , setnotification] = useState([])
 
-const API_URL ='http://localhost:1111';
+// const API_URL ='http://localhost:1111';
 const  getdata=async ()=>{
-    let data = await axios.get(`${API_URL}/communitynotification/`)
+    let data = await axios.get(`${API_URL}communitynotification/`)
     let notificationArray = data.data.notifications;
     setnotification(notificationArray);
 }

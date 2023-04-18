@@ -5,6 +5,7 @@ import axios from 'axios';
 import {useState , useEffect } from 'react'
 import '../../Styles/Noticepage/NotificationDetails.css';
 import { useLocation} from 'react-router-dom';
+import API_URL from '../../_helpers/Constants';
 import Header from '../../Components/Navigation/Header';
 export default function NotificationDetails() {
 
@@ -12,10 +13,10 @@ export default function NotificationDetails() {
   const location = useLocation();
   const tag = location.search.slice(5,);
   
-const API_URL ='http://localhost:1111';
+// const API_URL ='http://localhost:1111';
 const  getdata=async ()=>{
     const tag = location.search.slice(5,);
-    let data = await axios.get(`${API_URL}/collegenotification/${tag}`)
+    let data = await axios.get(`${API_URL}collegenotification/${tag}`)
     let notificationArray = data.data.notifications;
     setnotification(notificationArray);
 }

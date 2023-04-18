@@ -1,19 +1,19 @@
-import axios from "axios";
-import { BASE_URL } from "./Constants";
+// import axios from "axios";
+// import { API_URL } from "./Constants";
 
-axios.defaults.baseURL = BASE_URL;
+// axios.defaults.baseURL = API_URL;
 
 
-export const publicAxios = axios.create({ 
-    baseURL: BASE_URL,
-});
+// export const publicAxios = axios.create({ 
+//     baseURL: API_URL,
+// });
 
-publicAxios.interceptors.response.use(
-    function (res) {
-        return res.data;
-    },
-    async function (err) {
+// publicAxios.interceptors.response.use(
+//     function (res) {
+//         return res.data;
+//     },
+//     async function (err) {
         
-        return Promise.reject(err);
-    }
-);
+//         return Promise.reject(err);
+//     }
+// );
