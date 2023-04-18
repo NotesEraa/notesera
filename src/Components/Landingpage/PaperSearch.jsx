@@ -11,7 +11,7 @@ import {
 
 export default function PaperSearch() {
     const queryClient = useQueryClient();
-    const [notes , setnotes]=useState([])
+    const [papers , setpapers]=useState([])
     const [counter,setcounter]=useState(0)
 
     const getdata = ()=>{
@@ -23,7 +23,7 @@ export default function PaperSearch() {
          }
          console.log(datax) 
          axios.post(`${API_URL}papers/`,datax).then((res)=>{
-            setnotes(res.data.notes)
+            setpapers(res.data.papers)
          })
       }
       useEffect(()=>{
@@ -111,7 +111,7 @@ export default function PaperSearch() {
         <h2 className="alignCentre">Results</h2>
         
        {
-          notes.map((items,key)=>{
+          papers.map((items,key)=>{
                 return( <>
                 
                      <div className="p-3 result_search_notes material_card_list ">

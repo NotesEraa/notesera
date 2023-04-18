@@ -16,3 +16,23 @@ function ItemList({ items }) {
 }
 
 export default ItemList;
+
+
+obj = [{
+  
+  "subject":"os",
+  "semester":"1",
+  "program":"btech",
+  "link":"https://www.google.com",
+  "year":"2019",
+  "type":"mst"
+},
+{
+  
+  "subject":"stats",
+  "semester":"1",
+  "program":"btech",
+  "link":"https://www.google.com",
+  "year":"2019",
+  "type":"mst"
+}]
