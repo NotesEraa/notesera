@@ -16,7 +16,7 @@ import {QueryClient , QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
   const queryClient = new QueryClient();
-  const TRACKING_ID = 'G-DFT0ZZXNHV';
+  const TRACKING_ID = 'G-HRLJZ9QPGZ';
   ReactGa.initialize(TRACKING_ID)
   return (
     <div className="App">
