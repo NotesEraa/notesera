@@ -11,17 +11,17 @@ import ItemListButton from './Components/testCode/ItemListButton';
 import Noticedetails from '../src/Components/Notice/NotificationDetails'
 import {QueryClient , QueryClientProvider } from "@tanstack/react-query";
 
-const TRACKING_ID = 'G-DFT0ZZXNHV';
-ReactGa.initialize(TRACKING_ID)
+
 
 
 function App() {
   const queryClient = new QueryClient();
-
+  const TRACKING_ID = 'G-DFT0ZZXNHV';
+  ReactGa.initialize(TRACKING_ID)
   return (
     <div className="App">
          <QueryClientProvider client={queryClient}>
-
+          
         <main>
         <Routes>
           <Route path='/' element={<Landingpage/>} />

@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../Styles/Landingpage/NotesSearch.css';
+import ReactGa from 'react-ga';
 import { useState , useEffect} from 'react';
 import {Link } from 'react-router-dom';
 import axios from 'axios';
@@ -14,6 +15,16 @@ export default function NotesSearch() {
   const [notes , setnotes]=useState([])
   const [counter,setcounter]=useState(0)
 const getdata = ()=>{
+    ReactGa.event({
+          category:'notes fetch',
+          action:'getdata',
+          label:'fetching notes',
+          value:{
+            "program":qdata.programme_name,
+             "semester":qdata.semester,
+             "subject":qdata.subject_name,
+           }
+        })
   const datax = {
     "program":qdata.programme_name,
      "semestar":qdata.semester,
@@ -44,22 +55,6 @@ const tempdata = [
     
 
  });
-//  const API_URL ='http://localhost:1111';
-
-
-// const getNotes =  () => {
-//  const reqdata ={
-//     "program":qdata.programme_name,
-//      "semester":qdata.semester,
-//      "subject":qdata.subject_name,
-//    }
-//   //  console.log(reqdata)
-//   return axios.post(`${API_URL}/notes/`,reqdata
-// )};
-
-// const {isLoading , data} = useQuery({ queryKey: ['notes'], queryFn:getNotes})
-
-//  console.log(data.data.notes)
 
  const handleSubmit=(e)=>{
   
