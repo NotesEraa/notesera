@@ -4,8 +4,6 @@ import Img from '../../Assets/vectorsandimages/authentication_vector1.svg';
 import Background from '../../Assets/vectorsandimages/authcard_background.jpg';
 import Logo from '../../Assets/vectorsandimages/logo_notesera.png';
 import Header from '../../Components/Navigation/Header'
-import Footer from '../../Components/Navigation/Footer'
-import Cookies from 'js-cookies';
 import API_URL from '../../_helpers/Constants';
 import { useCookies } from 'react-cookie'
 import '../../Styles/Authpage/Login.css';

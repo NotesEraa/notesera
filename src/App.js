@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import ReactGa from 'react-ga';
 import { Route, Routes } from 'react-router-dom';
 import Landingpage from './Pages/Landingpage';
 import Noticepage from './Pages/Noticepage';
@@ -9,6 +10,9 @@ import Login from '../src/Components/Authentication/Login'
 import ItemListButton from './Components/testCode/ItemListButton';
 import Noticedetails from '../src/Components/Notice/NotificationDetails'
 import {QueryClient , QueryClientProvider } from "@tanstack/react-query";
+
+const TRACKING_ID = 'G-DFT0ZZXNHV';
+ReactGa.initialize(TRACKING_ID)
 
 
 function App() {

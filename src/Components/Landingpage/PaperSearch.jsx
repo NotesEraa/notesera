@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../Styles/Landingpage/NotesSearch.css';
+import ReactGa from 'react-ga';
 import { useState , useEffect} from 'react';
 import {Link } from 'react-router-dom';
 import axios from 'axios';
@@ -15,6 +16,16 @@ export default function PaperSearch() {
     const [counter,setcounter]=useState(0)
 
     const getdata = ()=>{
+        ReactGa.event({
+          category:'paper fetch',
+          action:'getdata',
+          label:'fetching paper',
+          value:{
+            "program":qdata.programme_name,
+             "semester":qdata.semester,
+             "subject":qdata.subject_name,
+           }
+        })
         const datax = {
           "program":qdata.programme_name,
            "semester":qdata.semester,

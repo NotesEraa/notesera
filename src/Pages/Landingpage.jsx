@@ -1,4 +1,6 @@
 import React from 'react'
+import ReactGa from 'react-ga';
+import { useEffect } from 'react';
 import Header from '../Components/Navigation/Header';
 import SectionOne from '../Components/Landingpage/SectionOne';
 import NotesSection from '../Components/Landingpage/NotesSection';
@@ -13,6 +15,12 @@ import {QueryClient , QueryClientProvider } from "@tanstack/react-query";
 export default function Landingpage() {
   const queryClient = new QueryClient();
  
+  //non interaction
+  useEffect(() => {
+     ReactGa.pageview(window.location.pathname)
+  }, [])
+  
+
   return (
     <>
     <QueryClientProvider client={queryClient}>
