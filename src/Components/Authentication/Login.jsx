@@ -11,6 +11,8 @@ import { useState } from 'react';
 import {Link } from 'react-router-dom';
 import { publicAxios } from '../../_helpers/AuthRoute';
 import axios from 'axios';
+import ReactGA from 'react-ga';
+import { useEffect } from 'react';
 
 import { 
     useQuery,
@@ -29,6 +31,7 @@ export default function Login() {
     password:"",
   });
   console.log()
+ 
   const addMutation = useMutation({
     mutationFn: async (data) => {
       console.log(API_URL)
@@ -36,6 +39,14 @@ export default function Login() {
       axios.post(`${API_URL}login/`,data).then((res)=>{
         console.log(res)
         if (res.status == 200){
+          ReactGA.event({
+            category:'login',
+            action:'loggin user',
+            label:`user - ${res.data.user.email}`,
+            value:{
+              "user":res.data.user.email,
+             }
+          })
           console.log(res.data.user.email)
           setuname(res.data.user.first_name)
           window.alert(`${res.data.user.email} logged in successfully`);

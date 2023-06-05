@@ -7,7 +7,7 @@ import Header from '../Components/Navigation/Header';
 import Footer from '../Components/Navigation/Footer';
 export default function Articlepage() {
   useEffect(() => {
-    ReactGA.pageview(window.location.pathname + window.location.search);
+    ReactGA.pageview(window.location.pathname);
   }, [])
   return (
     <>

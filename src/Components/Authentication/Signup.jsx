@@ -9,7 +9,8 @@ import axios from 'axios';
 import API_URL from '../../_helpers/Constants';
 import { useCookies } from 'react-cookie'
 // import Cookies from 'js-cookie'; 
-
+import ReactGA from 'react-ga';
+import { useEffect } from 'react';
 
 import { 
     useQuery,
@@ -45,6 +46,14 @@ export default function Signup() {
                 // Cookies.set('user_status','active')
                 // const user_name = Cookies.get('user_name');
                 // const user_status = Cookies.get('user_status');
+                ReactGA.event({
+                  category:'signup',
+                  action:'signing user',
+                  label:`user - ${res.data.user.email}`,
+                  value:{
+                    "user":user.email,
+                   }
+                })
                 setCookie('access_token', user.first_name)
                 window.alert('User registerred and logged in successfully!')
                 navigate('/landingpage')
