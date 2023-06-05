@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactGa from 'react-ga';
+import ReactGA from 'react-ga';
 import { useEffect } from 'react';
 import Header from '../Components/Navigation/Header';
 import SectionOne from '../Components/Landingpage/SectionOne';
@@ -12,12 +12,13 @@ import Footer from '../Components/Navigation/Footer';
 import Faq from '../Components/Landingpage/Faq';
 import {QueryClient , QueryClientProvider } from "@tanstack/react-query";
 
-export default function Landingpage() {
+
+function Landingpage() {
   const queryClient = new QueryClient();
  
   //non interaction
   useEffect(() => {
-     ReactGa.pageview(window.location.pathname)
+    ReactGA.pageview(window.location.pathname);
   }, [])
   
 
@@ -42,3 +43,5 @@ export default function Landingpage() {
     </>
   )
 }
+
+export default Landingpage;

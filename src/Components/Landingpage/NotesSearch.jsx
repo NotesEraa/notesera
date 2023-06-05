@@ -17,8 +17,8 @@ export default function NotesSearch() {
 const getdata = ()=>{
     ReactGa.event({
           category:'notes fetch',
-          action:'getdata',
-          label:'fetching notes',
+          action:'Get Notes',
+          label:`subject - ${qdata.subject_name}`,
           value:{
             "program":qdata.programme_name,
              "semester":qdata.semester,

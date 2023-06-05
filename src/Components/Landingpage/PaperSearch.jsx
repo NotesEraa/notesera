@@ -16,11 +16,20 @@ export default function PaperSearch() {
     const [counter,setcounter]=useState(0)
 
     const getdata = ()=>{
-      
+      ReactGa.event({
+        category:'papers fetch',
+        action:'Get papers',
+        label:`subject - ${q2data.subject_name}`,
+        value:{
+          "program":q2data.programme_name,
+           "semester":q2data.semester,
+           "subject":q2data.subject_name,
+         }
+      })
         const datax = {
-          "program":qdata.programme_name,
-           "semester":qdata.semester,
-           "subject":qdata.subject_name,
+          "program":q2data.programme_name,
+           "semester":q2data.semester,
+           "subject":q2data.subject_name,
           
          }
          console.log(datax) 
@@ -32,7 +41,7 @@ export default function PaperSearch() {
         getdata()
     },[counter])
 
-    const [ qdata , setqdata] = useState({
+    const [ q2data , setq2data] = useState({
         programme_name:"",
         semester:"",
         subject_name:"",
@@ -45,9 +54,9 @@ export default function PaperSearch() {
         console.log("in handle block!")
         e.preventDefault();
         const datax = {
-         "program":qdata.programme_name,
-          "semester":qdata.semester,
-          "subject":qdata.subject_name,
+         "program":q2data.programme_name,
+          "semester":q2data.semester,
+          "subject":q2data.subject_name,
          
         }
         setcounter(counter+1) 
@@ -58,7 +67,7 @@ export default function PaperSearch() {
           const data = e.target.value;
           const name = e.target.name;
           // console.log(data);
-          setqdata({...qdata,[name]:data});
+          setq2data({...q2data,[name]:data});
        }
         
 
@@ -71,7 +80,7 @@ export default function PaperSearch() {
           
            <h5>Programme name</h5>
            <select className="btn started_button dropdown-toggle col-6" id="program name"
-            value={qdata.programme_name}
+            value={q2data.programme_name}
             name = "programme_name"
             onChange={handleInput}
            >
@@ -82,7 +91,7 @@ export default function PaperSearch() {
 
            <h5>Subject name</h5>
            <select className="btn started_button dropdown-toggle col-6" id="subject name"
-           value={qdata.subject_name}
+           value={q2data.subject_name}
            name = "subject_name"
            onChange={handleInput}
            >
@@ -93,7 +102,7 @@ export default function PaperSearch() {
 
            <h5>semester name</h5>
            <select className="btn started_button dropdown-toggle col-6" id="subject name"
-            value={qdata.semestar}
+            value={q2data.semestar}
             name = "semester"
             onChange={handleInput}
            >
