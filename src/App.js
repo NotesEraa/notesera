@@ -12,12 +12,12 @@ import Noticedetails from '../src/Components/Notice/NotificationDetails'
 import {QueryClient , QueryClientProvider } from "@tanstack/react-query";
 
 
-
+const queryClient = new QueryClient();
+const TRACKING_ID = 'UA-271149535-2';
+ReactGa.initialize(TRACKING_ID)
 
 function App() {
-  const queryClient = new QueryClient();
-  const TRACKING_ID = 'UA-271149535-2';
-  ReactGa.initialize(TRACKING_ID)
+  
   return (
     <div className="App">
          <QueryClientProvider client={queryClient}>
