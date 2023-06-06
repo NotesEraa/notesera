@@ -1,8 +1,10 @@
 import React,{ useState } from 'react'
+import axios from 'axios';
+import API_URL from '../../_helpers/Constants';
 
-export default function Testcode() {
+export default function AddNotes() {
  
-  const [formData, setFormData] = useState({
+  const [formNotesData, setFormNotesData] = useState({
     subject: '',
     semester: '',
     program: '',
@@ -11,12 +13,28 @@ export default function Testcode() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    console.log(formNotesData);
+    let Notes_data =  { 
+        subject: formNotesData.subject,
+        semester: formNotesData.semester,
+        program: formNotesData.program,
+        link: formNotesData.link
+    }
+    axios.post(`${API_URL}addnotes`, 
+    Notes_data
+    )
+    .then(response => {
+    //   (response.data);
+      window.alert("Notes added successfully!")
+    })
+    .catch(error => {
+      window.alert(error);
+    });
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
+    setFormNotesData((prevData) => ({
       ...prevData,
       [name]: value
     }));
@@ -32,7 +50,7 @@ export default function Testcode() {
           className="form-control"
           id="subject"
           name="subject"
-          value={formData.subject}
+          value={formNotesData.subject}
           onChange={handleChange}
         />
       </div>
@@ -43,7 +61,7 @@ export default function Testcode() {
           className="form-control"
           id="semester"
           name="semester"
-          value={formData.semester}
+          value={formNotesData.semester}
           onChange={handleChange}
         />
       </div>
@@ -54,7 +72,7 @@ export default function Testcode() {
           className="form-control"
           id="program"
           name="program"
-          value={formData.program}
+          value={formNotesData.program}
           onChange={handleChange}
         />
       </div>
@@ -65,7 +83,7 @@ export default function Testcode() {
           className="form-control"
           id="link"
           name="link"
-          value={formData.link}
+          value={formNotesData.link}
           onChange={handleChange}
         />
       </div> <br></br>
