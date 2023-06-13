@@ -1,6 +1,6 @@
 
 .slider{
-	height:140px;
+	height:250px;
 
 	position:relative;
 	width:100%;
@@ -11,7 +11,7 @@
 
 .slide-track{
 	display:flex;
-	width:calc(250px*16);
+	width:calc(350px*16);
 	animation : scroll 40s linear infinite;
 }
 @keyframes scroll{
@@ -39,7 +39,7 @@
 }
 
 .slide{
-	height:100px;
+	height:120px;
 	width:250px;
 	display:flex;
 	align-items:center;
