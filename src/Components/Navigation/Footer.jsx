@@ -13,7 +13,7 @@ export default function Footer() {
          <div className="row gy-4 gx-5">
              <div className="col-lg-4 col-md-6">
                  <h5 className="h1 white">Notes- Era</h5>
-                 <p className="small  subhead">Don't go anywhere every solution is here!</p>
+                 <p className="small  subhead white">Don't go anywhere every solution is here!</p>
                  <p className="small white mb-0">&copy; Copyrights. All rights reserved. Mu study</p>
              </div>
              <div className="subdiv col-lg-7">
