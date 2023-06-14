@@ -7,7 +7,7 @@ import Noticepage from './Pages/Noticepage';
 import Authpage from './Pages/Authpage';
 import Articlepage from './Pages/Articlepage';
 import Login from '../src/Components/Authentication/Login'
-import Testcode from '../src/Components/Landingpage/Testcode';
+// import Testcode from '../src/Components/Landingpage/Testcode';
 import Admin from './Pages/Admin';
 import AdminLogin from './Pages/AdminLogin';
 import Noticedetails from '../src/Components/Notice/NotificationDetails'
@@ -35,7 +35,7 @@ function App() {
           <Route path='/noticedetails' element ={<Noticedetails/>}/>
           <Route path='/admin' element={<AdminLogin/>} />
           <Route path ='/adminDadhboard12121212343434343434455545fkngijtnbgtbgrnvijgbibijnfdvjn' element={<Admin/>} />
-          <Route path='/test' element={<Testcode/>} />
+          {/* <Route path='/test' element={<Testcode/>} /> */}
         </Routes>
       </main>
       </QueryClientProvider>
